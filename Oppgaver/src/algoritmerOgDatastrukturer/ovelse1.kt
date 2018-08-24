@@ -1,15 +1,15 @@
 package algoritmerOgDatastrukturer
 
-import java.util.stream.IntStream
-
 fun main(args: Array<String>) {
     val stockChanges = arrayOf(-6,4,0,-3,-9,0,4,1,-2) // 4-7   arrayOf(-1,3,-9,2,2,-1,2,-1,-5)
     val stockChange = StockChange(stockChanges)
 
     println("For stock changes $stockChanges the best day for buying is ${stockChange.bestBuyDate} and best selling day is ${stockChange.bestSellDate}")
+
+
 }
 
-class StockChange(val data: Array<Int>) {
+class StockChange(data: Array<Int>) {
     val bestBuyDate: Int
     val bestSellDate: Int
 

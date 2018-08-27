@@ -1,3 +1,4 @@
+import java.util.stream.IntStream
 import java.util.stream.LongStream
 
 fun main(args: Array<String>) {
@@ -45,6 +46,3 @@ class MyntKronSequence(val nrBits: Long, val sequence: Int) {
         return false
     }
 }
-
-
-

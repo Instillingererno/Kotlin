@@ -6,7 +6,7 @@ import kotlin.system.measureTimeMillis
 
 fun main (args: Array<String>) {
 
-    val maxPowers = 1_000_000L
+    val maxPowers = 1_000_000_000L
 
     val recursivePowerTime = measureTimeMillis {
         val sum = IntStream.iterate(1, Int::inc).limit(maxPowers).mapToDouble { recursivePower(it, 10) }.sum()

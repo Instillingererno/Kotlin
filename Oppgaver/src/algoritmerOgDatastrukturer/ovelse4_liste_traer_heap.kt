@@ -4,18 +4,19 @@ import javafx.application.Application
 import javafx.geometry.Insets
 import javafx.scene.Scene
 import javafx.scene.canvas.Canvas
+import javafx.scene.canvas.GraphicsContext
 import javafx.scene.control.TextField
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
-import org.graphstream.graph.Edge
-import org.graphstream.graph.Graph
-import org.graphstream.graph.implementations.SingleGraph
 import java.lang.StringBuilder
 import java.util.function.Consumer
 
 
 fun main(args: Array<String>) {
-    //println(dobbelLenkeOf("0000000001"))
+    val five = dobbelLenkeOf("5")
+    val three = dobbelLenkeOf("3")
+
+    //println(five.apply { negate() }.subtract(three).apply { negate() })
 
     Application.launch(App::class.java, *args)
 }
@@ -62,13 +63,36 @@ class DobbelLenke {
         return temp!!.siffer
     }
 
+    private fun trim() {
+        var temp = head
+        while (temp != null && temp.siffer.toInt() == 0) {
+            temp = temp.neste
+        }
+        if (temp != null) {
+            if (temp!!.forrige != null) {
+                temp.forrige.apply { this!!.neste = null }
+                temp.forrige = null
+                head = temp
+            }
+        } else {
+            head = Node(0)
+        }
+    }
+
     override fun toString() = StringBuilder()
                 .also { output ->
                     if (!positiv) output.append("-")
                     ascendingIterator(Consumer { output.append(it) })
                 }.toString()
 
+
     fun add(list: DobbelLenke): DobbelLenke {
+        /* if(!positiv) {
+            when (list.positiv) {
+                true -> return list.subtract(this.apply { negate() })
+                false -> return apply { negate() }.add(list.apply { negate() })
+            }
+        } else if (!list.positiv) return subtract(list.apply { negate() }) */
         var carry = 0
         var nextNr: Byte = 0
         val largestSize = setOf(size, list.size()).max()!!
@@ -90,6 +114,12 @@ class DobbelLenke {
     }
 
     fun subtract(list: DobbelLenke): DobbelLenke {
+        /* if(!positiv) {
+            when (list.positiv) {
+                true -> return list.apply { negate() }.subtract(this.apply { negate() })
+                false -> return this.apply { negate() }.add(list.apply { negate() }).apply { negate() } // Denne blir feil, av ein eller annen grunn
+            }
+        } else if (!list.positiv) return this.add(list.apply { negate() }) */
         var carry = 0
         var nextNr: Byte = 0
         val largestSize = setOf(size, list.size()).max()!!
@@ -101,7 +131,7 @@ class DobbelLenke {
                     when (nextNr) {
                         in 0..9 -> it.addFirst(nextNr)
                         else -> {
-                            carry--
+                            carry++
                             it.addFirst(nextNr.plus(10).toByte())
                         }
                     }
@@ -109,10 +139,12 @@ class DobbelLenke {
                 }
             }
         }
+        output.trim()
+        if (output.head == null) output.addFirst(0)
         return output
     }
 
-    class Node(var siffer: Byte, var neste: Node?, var forrige: Node?)
+    class Node(var siffer: Byte, var neste: Node? = null, var forrige: Node? = null)
 }
 
 fun dobbelLenkeOf(vararg elements: Byte) = DobbelLenke().also { lenke -> elements.forEach { lenke.addLast(it) } }
@@ -137,6 +169,10 @@ class BinaertTre {
         else {
             root!!.add(ord)
         }
+    }
+
+    fun preorderTravelsal(function: Consumer<Pair<Node, Int>>) {
+
     }
 
     override fun toString(): String {
@@ -172,9 +208,18 @@ fun binaertTreOf(tekst: String) = BinaertTre().also { tre -> tekst.trim().split(
 
 
 class App : Application() {
+    val CANVAS_HEIGHT = 600.0
+    val CANVAS_WIDTH = 1000.0
+    val ovalWidth = 40.0
+    val startX = CANVAS_WIDTH / 2 - ovalWidth / 2
+    val startY = 50.0
+    val angle = Math.toRadians(80.0)
+    val angleLoss = Math.toRadians(20.0)
+    val length = 150.0
+
     override fun start(stage: Stage) {
         val edit = TextField()
-        val tree = Canvas(400.0,600.0)
+        val tree = Canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
         val gc = tree.graphicsContext2D
 
         val vBox = VBox(edit, tree).apply {
@@ -184,10 +229,35 @@ class App : Application() {
 
         edit.textProperty().addListener { _ ->
             // POPULATE CANVAS
-            println(binaertTreOf(edit.text))
+            gc.clearRect(0.0,0.0, CANVAS_WIDTH, CANVAS_HEIGHT)
+            recursiveDraw(binaertTreOf(edit.text).root, gc, startX, startY, angle)
         }
 
         stage.scene = Scene(vBox)
         stage.show()
+    }
+
+    fun recursiveDraw(node: BinaertTre.Node?, gc: GraphicsContext, x: Double, y: Double, angle: Double) {
+        if (node == null)  {
+            gc.fillText("No node", x, y)
+            return
+        }
+        drawOvalFromOrigin(gc, x, y)
+        gc.fillText(node.ord, x, y)
+        val dX = Math.sin(angle) * length
+        val dY = Math.cos(angle) * length
+
+        if (node.left != null) {
+            gc.strokeLine(x + ovalWidth / 2,y + ovalWidth / 2, x - dX + ovalWidth / 2, y + dY + ovalWidth / 2)
+            recursiveDraw(node.left!!, gc, x - dX, y + dY, angle - angleLoss)
+        }
+        if (node.right != null) {
+            gc.strokeLine(x + ovalWidth / 2,y + ovalWidth / 2, x + dX + ovalWidth / 2, y + dY + ovalWidth / 2)
+            recursiveDraw(node.right!!, gc, x + dX, y + dY, angle - angleLoss)
+        }
+    }
+
+    fun drawOvalFromOrigin(gc: GraphicsContext, x: Double, y: Double) {
+        gc.fillOval(x, y, ovalWidth, ovalWidth)
     }
 }

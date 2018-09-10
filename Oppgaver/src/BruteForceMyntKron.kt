@@ -2,17 +2,16 @@ import java.util.stream.IntStream
 import java.util.stream.LongStream
 
 fun main(args: Array<String>) {
-    val bits: Long = 10
-    val sequence = 4
+    //val bits: Long = 3
+    val sequence = 7
 
-    val myntKronSequence = MyntKronSequence(bits, sequence)
+    LongStream.rangeClosed(7,21).forEach { bits ->
+        val myntKronSequence = MyntKronSequence(bits, sequence)
 
-    println("""
-        Result is:
-            totalTries: ${ myntKronSequence.totalTries }
+        println("""
             sequence: ${ myntKronSequence.sequenceAcurance }
-            percentage: ${ myntKronSequence.sequenceAcurance.toDouble() / myntKronSequence.totalTries.toDouble() * 100 }
     """.trimIndent())
+    }
 }
 
 class MyntKronSequence(val nrBits: Long, val sequence: Int) {
@@ -33,11 +32,13 @@ class MyntKronSequence(val nrBits: Long, val sequence: Int) {
     private fun checkSequence(number: Long, nrBits: Int): Boolean {
         var mutNumber = number
         var sequenceCounter = 0
+        var duplicates = 0
 
         while(mutNumber != 0L) {
             if (mutNumber % 2L != 0L) {
                 sequenceCounter++
-                if(sequenceCounter == nrBits) return true
+                if(sequenceCounter == nrBits) duplicates++
+                if(duplicates > 1) return true
             } else {
                 sequenceCounter = 0
             }

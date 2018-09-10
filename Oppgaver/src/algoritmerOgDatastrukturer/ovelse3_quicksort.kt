@@ -1,6 +1,5 @@
 package algoritmerOgDatastrukturer
 
-import kotlinx.coroutines.experimental.launch
 import java.lang.Exception
 import java.util.*
 import java.util.concurrent.CompletableFuture
@@ -88,26 +87,29 @@ class SinglePivot(val array: IntArray) {
     }
 
     private fun quicksort(lo: Int, hi: Int) { if (lo < hi) {
-        //if (hi - lo < 30) insertsort(lo, hi+1)
-        //else {
-            val p = partition(lo, hi)
-            quicksort(lo, p-1)
-            quicksort(p+1, hi)
-        //}
-    } }
+        if (hi - lo < 30) insertsort(lo, hi+1)
+        else {
+            val middle = lo + (hi - lo)/2
+            val pivot = array[middle]
 
-    private fun partition(lo: Int, hi: Int): Int {
-        val pivot = array[hi]
-        var i = lo
-        for (j in lo until hi) {
-            if (array[j] < pivot) {
-                array[i] = array[j].also { array[j] = array[i] }
-                i++
+            var (left, right) = lo to hi
+            while (left <= right) {
+                while (array[left] < pivot) {
+                    left++
+                }
+                while (array[right] > pivot) {
+                    right--
+                }
+                if (left <= right) {
+                    array[left] = array[right].also { array[right] = array[left] }
+                    left++
+                    right--
+                }
             }
+            if (lo < hi) quicksort(lo, right)
+            if (hi > left) quicksort(left, hi)
         }
-        array[i] = array[hi].also { array[hi] = array[i] }
-        return i
-    }
+    } }
 
     private fun insertsort(lo: Int, hi: Int) {
         for (i in lo+1 until hi) {
@@ -135,50 +137,33 @@ class DualPivot(val array: IntArray) {
     fun quicksort(lo: Int, hi: Int) { if (lo < hi) {
         if (hi - lo < 30) insertsort(lo, hi+1)
         else {
-            //lp = left pivot, rp = right pivot
-            val (lp, rp) = partition(lo, hi)
-            quicksort(lo, lp-1)
-            quicksort(lp+1, rp-1)
-            quicksort(rp+1, hi)
-        }
-    } }
-
-    fun partition(lo: Int, hi: Int): Pair<Int, Int> {
-        if(array[lo] > array[hi])
-            array[lo] = array[hi].also { array[hi] = array[lo] }
-        var j = lo + 1
-        var g = hi - 1
-        var k = lo + 1
-        val p = array[lo]
-        val q = array[hi]
-        while (k <= g) {
-            if (array[k] < p) {
-                array[k] = array[j].also { array[j] = array[k] }
-                j++
-            }
-            // if elements are greater than or equal
-            // to the right pivot
-            else if (array[k] >= q) {
-                while (array[g] > q && k < g)
-                    g--
-                array[k] = array[g].also { array[g] = array[k] }
-                g--
-                if (array[k] < p) {
-                    array[k] = array[j].also { array[j] = array[k] }
-                    j++
+            array[lo] = array[(hi - lo) / 3 + lo].also { array[(hi - lo) / 3 + lo] = array[lo] }
+            array[hi] = array[(hi - lo) * 2 / 3 + lo].also { array[(hi - lo) * 2 / 3 + lo] = array[hi] }
+            if(array[hi] < array[lo]) array[hi] = array[lo].also { array[lo] = array[hi] }
+            var (left, right) = lo + 1 to hi - 1
+            var current = lo + 1
+            while (current <= right) {
+                if (array[current] < array[lo]) {
+                    array[left] = array[current].also { array[current] = array[left] }
+                    left++
+                    current++
+                } else if (array[hi] < array[current]) {
+                    array[current] = array[right].also { array[right] = array[current] }
+                    right--
+                } else {
+                    current++
                 }
             }
-            k++
+            left--
+            right++
+            array[lo] = array[left].also { array[left] = array[lo] }
+            array[hi] = array[right].also { array[right] = array[hi] }
+
+            quicksort(lo, left -1)
+            if(array[left] < array[right]) quicksort(left + 1, right -1)
+            quicksort(right + 1, hi)
         }
-        j--
-        g++
-
-        // Bring pivots to their appropriate positions
-        array[lo] = array[j].also { array[j] = array[lo] }
-        array[hi] = array[g].also { array[g] = array[hi] }
-
-        return j to g
-    }
+    } }
 
     fun insertsort(lo: Int, hi: Int) {
         for (i in lo+1 until hi) {

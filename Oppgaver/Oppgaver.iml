@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
     <orderEntry type="library" name="com.xeiam.xchart:xchart:2.5.1" level="application" />
+    <orderEntry type="library" name="org.graphstream:gs-algo:2.0-SNAPSHOT" level="application" />
   </component>
 </module>

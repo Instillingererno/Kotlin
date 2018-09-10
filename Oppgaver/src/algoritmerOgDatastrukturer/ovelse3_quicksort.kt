@@ -19,6 +19,30 @@ fun main(args: Array<String>) {
         Sjekk for korrekt sortering
      */
 
+    /*
+    Data:
+        Test with 10000000 elements
+            Tabell med tilfeldig data
+                SinglePivot used: 965ms	Check: true
+                DualPivot used: 994ms	Check: true
+            Annenhvert element er 5000
+                DualPivot used: 626ms	Check: true
+                SinglePivot timed out after 30 minutes
+            Tabell med sorterte verdier
+                SinglePivot timed out after 30 minutes
+                DualPivot timed out after 30 minutes
+        Test with 100000000 elements
+            Tabell med tilfeldig data
+                SinglePivot used: 11796ms	Check: true
+                DualPivot used: 12211ms	Check: true
+            Annenhvert element er 5000
+                DualPivot used: 8454ms	Check: true
+                SinglePivot timed out after 30 minutes
+            Tabell med sorterte verdier
+                SinglePivot timed out after 30 minutes
+                DualPivot timed out after 30 minutes
+     */
+
     LongStream.of(10_000_000L, 100_000_000L).forEachOrdered { limit ->
         println("Test with $limit elements")
         for(i in 1..3) {

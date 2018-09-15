@@ -1,10 +1,11 @@
 import java.math.BigInteger
+import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) {
 
-    val startTime = System.currentTimeMillis()
-    val test = BigInteger("987654321").pow(300_000)
-    val endTime = System.currentTimeMillis()
-
-    println("${test.bitLength()} Time: ${endTime - startTime}ms")
+    measureTimeMillis {
+        BigInteger("75").modPow(BigInteger("98320831902138712308"), BigInteger("37")).also {
+            println(it)
+        }.also { println("$it ms") }
+    }
 }

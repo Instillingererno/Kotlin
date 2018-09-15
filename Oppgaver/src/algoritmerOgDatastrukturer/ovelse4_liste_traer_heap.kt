@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox
 import javafx.stage.Stage
 import java.lang.StringBuilder
 import java.util.function.Consumer
+import java.util.stream.DoubleStream
 
 
 fun main(args: Array<String>) {
@@ -141,6 +142,7 @@ class DobbelLenke {
         }
         output.trim()
         if (output.head == null) output.addFirst(0)
+
         return output
     }
 
@@ -149,12 +151,11 @@ class DobbelLenke {
 
 fun dobbelLenkeOf(vararg elements: Byte) = DobbelLenke().also { lenke -> elements.forEach { lenke.addLast(it) } }
 
-
 fun dobbelLenkeOf(tall: String) = dobbelLenkeOf(*tall.toCharArray()
-        .filter { it.isDigit() }
-        .map(Character::getNumericValue)
-        .dropWhile { it == 0 }
-        .map(Int::toByte).toByteArray())
+        .filter(Char::isDigit)
+        .map { it.toByte() }
+        .dropWhile { it == 0.toByte() }
+        .toByteArray())
 
 
 
@@ -169,10 +170,6 @@ class BinaertTre {
         else {
             root!!.add(ord)
         }
-    }
-
-    fun preorderTravelsal(function: Consumer<Pair<Node, Int>>) {
-
     }
 
     override fun toString(): String {
@@ -195,9 +192,10 @@ class BinaertTre {
             val y: String = "   ".repeat(indent)
             val leftString = if (left == null) "Null" else left!!.pprint(indent + 1)
             val rightString = if (right == null) "Null" else right!!.pprint(indent + 1)
-            return StringBuilder().also { it.append(ord)
-                    .append("\n ${y} ${leftString}")
-                    .append("\n ${y} ${rightString}")
+            return StringBuilder().apply {
+                    append(ord)
+                    append("\n ${y} ${leftString}")
+                    append("\n ${y} ${rightString}")
             }.toString()
         }
     }
@@ -226,6 +224,7 @@ class App : Application() {
             spacing = 15.0
             padding = Insets(15.0)
         }
+
 
         edit.textProperty().addListener { _ ->
             // POPULATE CANVAS
@@ -257,7 +256,5 @@ class App : Application() {
         }
     }
 
-    fun drawOvalFromOrigin(gc: GraphicsContext, x: Double, y: Double) {
-        gc.fillOval(x, y, ovalWidth, ovalWidth)
-    }
+    fun drawOvalFromOrigin(gc: GraphicsContext, x: Double, y: Double) { gc.fillOval(x, y, ovalWidth, ovalWidth) }
 }

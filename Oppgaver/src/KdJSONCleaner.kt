@@ -8,10 +8,10 @@ import kotlin.streams.toList
 
 
 fun main(args: Array<String>) {
-    val onsdag = File("C:\\Users\\KALAM\\Documents\\Kotlin\\Oppgaver\\src\\KdJSON\\Onsdag.json").readText()
+    val onsdag = File("C:\\Users\\TDAT1337\\Documents\\GitHub\\Kotlin\\Oppgaver\\src\\KdJSON\\Onsdag.json").readText()
     val onsdagArray = JSONArray(onsdag)
 
-    val torsdag = File("C:\\Users\\KALAM\\Documents\\Kotlin\\Oppgaver\\src\\KdJSON\\Torsdag.json").readText()
+    val torsdag = File("C:\\Users\\TDAT1337\\Documents\\GitHub\\Kotlin\\Oppgaver\\src\\KdJSON\\Torsdag.json").readText()
     val torsdagArray = JSONArray(torsdag)
 
     val nameUrl = File("C:\\Users\\KALAM\\Documents\\Kotlin\\Oppgaver\\src\\KdJSON\\nameUrlMap.json").readText()
@@ -61,6 +61,8 @@ fun main(args: Array<String>) {
             else -> null
         } }
     }
+    val test1 = JSONObject("{'key': 'value'}")
+    val test2 = JSONObject("{'key': 'value'}")
 
     val onsdagClean = mapToClean(onsdagArray)
     val torsdagClean = mapToClean(torsdagArray)

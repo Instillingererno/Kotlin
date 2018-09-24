@@ -14,10 +14,11 @@ import java.util.stream.DoubleStream
 
 
 fun main(args: Array<String>) {
-    val five = dobbelLenkeOf("5")
-    val three = dobbelLenkeOf("3")
+    val num1 = dobbelLenkeOf("100000000000000000000000000000000000000000000000000000000")
+    val num2 = dobbelLenkeOf("1")
 
-    //println(five.apply { negate() }.subtract(three).apply { negate() })
+
+    println(num1.subtract(num2))
 
     Application.launch(App::class.java, *args)
 }
@@ -31,7 +32,7 @@ class DobbelLenke {
 
     fun size() = size
 
-    fun negate() { positiv = !positiv }
+    fun negate(): DobbelLenke { positiv = !positiv; return this }
 
     fun addFirst(element: Byte) {
         val temp = Node(element, head, null)
@@ -124,7 +125,7 @@ class DobbelLenke {
         var carry = 0
         var nextNr: Byte = 0
         val largestSize = setOf(size, list.size()).max()!!
-        val output: DobbelLenke = if (list.size() > size) list.subtract(this).also { it.negate() } else {
+        val output = if (list.size() > size) list.subtract(this).negate() else {
             DobbelLenke().also {
                 for (i in 0 until largestSize) {
                     nextNr = nextNr.plus(getFromLast(i)).minus(carry).minus(list.getFromLast(i)).toByte()
@@ -152,10 +153,10 @@ class DobbelLenke {
 fun dobbelLenkeOf(vararg elements: Byte) = DobbelLenke().also { lenke -> elements.forEach { lenke.addLast(it) } }
 
 fun dobbelLenkeOf(tall: String) = dobbelLenkeOf(*tall.toCharArray()
-        .filter(Char::isDigit)
-        .map { it.toByte() }
-        .dropWhile { it == 0.toByte() }
-        .toByteArray())
+        .filter { it.isDigit() }
+        .map(Character::getNumericValue)
+        .dropWhile { it == 0 }
+        .map(Int::toByte).toByteArray())
 
 
 
@@ -258,3 +259,5 @@ class App : Application() {
 
     fun drawOvalFromOrigin(gc: GraphicsContext, x: Double, y: Double) { gc.fillOval(x, y, ovalWidth, ovalWidth) }
 }
+
+

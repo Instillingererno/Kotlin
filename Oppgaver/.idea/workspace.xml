@@ -15,8 +15,8 @@
       <file leaf-file-name="ovelse3_quicksort.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse3_quicksort.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+            <state relative-caret-position="3198">
+              <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
               <folding>
                 <element signature="e#36#272#0" expanded="true" />
                 <element signature="n#!!block;n#insertsort#0;n#!!block;n#SinglePivot#0" />
@@ -31,27 +31,31 @@
       <file leaf-file-name="ovelse4_liste_traer_heap.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse4_liste_traer_heap.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1196">
-              <caret line="76" column="13" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
+            <state relative-caret-position="1014">
+              <caret line="49" column="14" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KdJSONCleaner.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="KdJSONCleaner.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KdJSONCleaner.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
+            <state relative-caret-position="260">
+              <caret line="50" column="17" selection-start-line="49" selection-start-column="13" selection-end-line="50" selection-end-column="17" />
               <folding>
-                <element signature="e#1#119#0" expanded="true" />
+                <element signature="e#0#178#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Clean.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/KdJSON/Clean.json">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="ovelse5_hashtabell.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse5_hashtabell.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="Onsdag.json" pinned="false" current-in-tab="false">
@@ -66,8 +70,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../nettkom/Nettside/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="858">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
             </state>
           </provider>
         </entry>
@@ -76,7 +80,7 @@
         <entry file="file://$PROJECT_DIR$/src/BigIntegerTest.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="130">
-              <caret line="6" column="82" selection-start-line="6" selection-start-column="82" selection-end-line="6" selection-end-column="82" />
+              <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
               <folding>
                 <element signature="e#0#66#0" expanded="true" />
               </folding>
@@ -116,13 +120,15 @@
         <option value="$PROJECT_DIR$/src/guiEksempler/typeahead.kt" />
         <option value="$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse1_aksje.kt" />
         <option value="$PROJECT_DIR$/src/CoRoutinesTest.kt" />
-        <option value="$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse3_quicksort.kt" />
-        <option value="$PROJECT_DIR$/src/BigIntegerTest.kt" />
         <option value="$PROJECT_DIR$/src/BruteForceRightAnswer.kt" />
         <option value="$PROJECT_DIR$/src/BruteForceMyntKron.kt" />
-        <option value="$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse4_liste_traer_heap.kt" />
         <option value="$PROJECT_DIR$/src/KdJSON/Onsdag.json" />
+        <option value="$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse3_quicksort.kt" />
+        <option value="$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse2_rekursjon.kt" />
+        <option value="$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse4_liste_traer_heap.kt" />
         <option value="$PROJECT_DIR$/src/KdJSONCleaner.kt" />
+        <option value="$PROJECT_DIR$/src/BigIntegerTest.kt" />
+        <option value="$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse5_hashtabell.kt" />
       </list>
     </option>
   </component>
@@ -136,7 +142,7 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
+    <option name="x" value="1358" />
     <option name="width" value="1390" />
     <option name="height" value="1756" />
   </component>
@@ -145,6 +151,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -179,8 +187,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -215,7 +221,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Kotlin.KdJSONCleanerKt">
+  <component name="RunManager" selected="Kotlin.BigIntegerTestKt">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -316,11 +322,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Kotlin.KdJSONCleanerKt" />
-        <item itemvalue="Kotlin.algoritmerOgDatastrukturer.Ovelse4_liste_traer_heapKt" />
-        <item itemvalue="Kotlin.BruteForceMyntKronKt" />
         <item itemvalue="Kotlin.BigIntegerTestKt" />
+        <item itemvalue="Kotlin.algoritmerOgDatastrukturer.Ovelse4_liste_traer_heapKt" />
+        <item itemvalue="Kotlin.KdJSONCleanerKt" />
         <item itemvalue="Kotlin.algoritmerOgDatastrukturer.Ovelse3_quicksortKt" />
+        <item itemvalue="Kotlin.BruteForceMyntKronKt" />
       </list>
     </recent_temporary>
   </component>
@@ -345,41 +351,47 @@
       <workItem from="1536927744507" duration="4547000" />
       <workItem from="1536942200326" duration="2616000" />
       <workItem from="1537023170737" duration="7520000" />
+      <workItem from="1537093540201" duration="2666000" />
+      <workItem from="1537106878065" duration="3240000" />
+      <workItem from="1537178181380" duration="9809000" />
+      <workItem from="1537199135212" duration="2244000" />
+      <workItem from="1537285609022" duration="8000" />
+      <workItem from="1537363304908" duration="1224000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74628000" />
+    <option name="totallyTimeSpent" value="93819000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="11" />
+      <window_info anchor="bottom" id="TODO" order="8" />
       <window_info anchor="right" id="Cargo" order="15" />
+      <window_info anchor="right" id="Palette&#9;" order="12" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="17" />
       <window_info anchor="bottom" id="Event Log" order="16" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="13" />
       <window_info anchor="bottom" id="Database Changes" order="19" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="20" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28666666" />
+      <window_info anchor="bottom" id="Floobits" order="18" />
+      <window_info anchor="bottom" id="Terminal" order="17" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19652306" />
       <window_info anchor="bottom" id="Statistic" order="21" />
       <window_info anchor="right" id="Database" order="16" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="8" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.53066665" />
-      <window_info anchor="right" id="Palette&#9;" order="12" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="17" />
-      <window_info anchor="bottom" id="Version Control" order="20" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28933334" />
-      <window_info anchor="bottom" id="Floobits" order="18" />
-      <window_info anchor="bottom" id="Terminal" order="17" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16780046" />
       <window_info anchor="right" id="Theme Preview" order="14" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.868" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -400,6 +412,20 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/guiEksempler/typeahead.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KdJSONCleaner.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1196">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ovelse1.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -543,13 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse2_rekursjon.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1352">
-          <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse1_aksje.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1144">
@@ -630,41 +649,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse1_aksje.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1196">
-          <caret line="46" column="26" selection-start-line="43" selection-start-column="8" selection-end-line="47" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/guiEksempler/typeahead.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse3_quicksort.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-          <folding>
-            <element signature="e#36#272#0" expanded="true" />
-            <element signature="n#!!block;n#insertsort#0;n#!!block;n#SinglePivot#0" />
-            <element signature="n#!!block;n#checkIfCorrect#0;n#!!block;n#SinglePivot#0" />
-            <element signature="n#!!block;n#insertsort#0;n#!!block;n#DualPivot#0" />
-            <element signature="n#!!block;n#checkIfCorrect#0;n#!!block;n#DualPivot#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BigIntegerTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="6" column="82" selection-start-line="6" selection-start-column="82" selection-end-line="6" selection-end-column="82" />
-          <folding>
-            <element signature="e#0#66#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -684,15 +672,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../nettkom/Nettside/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse4_liste_traer_heap.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1196">
-          <caret line="76" column="13" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
+        <state relative-caret-position="858">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
         </state>
       </provider>
     </entry>
@@ -703,22 +684,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KdJSON/Clean.json">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse1_aksje.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1040">
+          <caret line="42" column="18" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="18" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KdJSON/Sectors.json">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse2_rekursjon.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KdJSON/Courses.json">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse3_quicksort.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3198">
+          <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
+          <folding>
+            <element signature="e#36#272#0" expanded="true" />
+            <element signature="n#!!block;n#insertsort#0;n#!!block;n#SinglePivot#0" />
+            <element signature="n#!!block;n#checkIfCorrect#0;n#!!block;n#SinglePivot#0" />
+            <element signature="n#!!block;n#insertsort#0;n#!!block;n#DualPivot#0" />
+            <element signature="n#!!block;n#checkIfCorrect#0;n#!!block;n#DualPivot#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse4_liste_traer_heap.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1014">
+          <caret line="49" column="14" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BigIntegerTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KdJSONCleaner.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
+        <state relative-caret-position="260">
+          <caret line="50" column="17" selection-start-line="49" selection-start-column="13" selection-end-line="50" selection-end-column="17" />
           <folding>
-            <element signature="e#1#119#0" expanded="true" />
+            <element signature="e#0#178#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algoritmerOgDatastrukturer/ovelse5_hashtabell.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>

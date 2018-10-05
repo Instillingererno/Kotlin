@@ -13,9 +13,11 @@ import kotlin.system.measureTimeMillis
 fun main(args: Array<String>) {
 
 
-    val names = File("C:\\Users\\TDAT1337\\Documents\\GitHub\\Kotlin\\Oppgaver\\src\\algoritmerOgDatastrukturer\\Assets\\names.txt").readLines().mapIndexed { index, value -> value to index }
+    val names = File("C:\\Users\\KALAM\\Documents\\Kotlin\\Oppgaver\\src\\algoritmerOgDatastrukturer\\Assets\\names.txt").readLines().mapIndexed { index, value -> value to index }
 
-    val navnhasjTabell = HashTable<String, Int>(names.size)
+    val test = HashTable<String, Int>(100)
+
+    val navnhasjTabell = HashTable<String, Int>(127)
             .apply {
                 measureTimeMillis {
                     putAll(names)
@@ -51,12 +53,26 @@ fun main(args: Array<String>) {
 
     println("\n\n\nStarting table init")
 
-    val hasjTabell = HashTable<Int, Int>(randomNrs.size)
+    val hasjTabell = HashTable<Int, Int>((randomNrs.size * 1.2).toInt())
             .apply {
                 measureTimeMillis {
                     putAll(randomNrs)
                 }.also { println("$it ms") }
             }
+
+    val nrAverage = hasjTabell.entries
+            .mapNotNull { it?.run { it.children } }
+            .sumByDouble { it.toDouble() } / 5_000_000
+
+    val nrLoadFactor = hasjTabell.entries
+            .count { it != null }.toDouble() / 5_000_000
+
+
+    println("Gjennomsnittlig kollisjon per index: $nrAverage")
+    println("Loadfactor: $nrLoadFactor")
+
+
+
 
 
 
@@ -114,7 +130,7 @@ class HashTable<K, V>(private val initialSize: Int) {
                 if (entry == null) entries[it] = Entry(pair)
                 else entry.put(Entry(pair))
                 // for å dobbel hashe:
-                // else put(it to pair.second)
+                //
             }
         //}.also { accessTime = it }
     }
@@ -138,7 +154,7 @@ class HashTable<K, V>(private val initialSize: Int) {
 
     fun hash(key: Int): Int {
         val h = (key * 0x9E3779B9).toInt() //Phi - gyldne snitt
-        return h xor (h ushr 16)
+        return h xor (h ushr 16) // h ^ (h >>> 16)
     }
 
     fun hash(key: String): Int {
@@ -153,7 +169,6 @@ class HashTable<K, V>(private val initialSize: Int) {
     override fun toString() = entries.mapNotNull { it?.pprint() }.joinToString(separator = "")
 
     fun toString(limit: Int) = entries.sliceArray((0..limit)).mapNotNull { it?.pprint() }.joinToString(separator = "")
-
 
 
     class Entry<K, V>(val pair: Pair<K, V>, var next: Entry<K, V>? = null) {
@@ -180,12 +195,12 @@ class HashTable<K, V>(private val initialSize: Int) {
             }
         }
 
-        fun get(key: K): V? {
-            return if (pair.first == key) pair.second
-                else {
-                    if(next != null) next!!.get(key)
-                    else null
-                }
-        }
+        fun get(key: K): V? = if (pair.first == key) pair.second else next?.get(key)
+        
     }
 }
+
+
+
+
+

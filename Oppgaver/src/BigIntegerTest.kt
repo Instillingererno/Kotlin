@@ -4,7 +4,7 @@ import kotlin.system.measureTimeMillis
 fun main(args: Array<String>) {
 
     println(BigInteger("12345678901234567890123456789012345678901234567890123456789012345678901234567890").pow(2)).also {
-        println(it.)
+        println(it)
     }
 
     /*

@@ -1,11 +1,6 @@
 import org.json.JSONArray
 import org.json.JSONObject
-import org.json.JSONWriter
 import java.io.File
-import java.util.*
-import java.util.stream.Stream
-import kotlin.streams.toList
-
 
 fun main(args: Array<String>) {
     val onsdag = File("C:\\Users\\TDAT1337\\Documents\\GitHub\\Kotlin\\Oppgaver\\src\\KdJSON\\Onsdag.json").readText()
@@ -17,22 +12,29 @@ fun main(args: Array<String>) {
     val nameUrl = File("C:\\Users\\KALAM\\Documents\\Kotlin\\Oppgaver\\src\\KdJSON\\nameUrlMap.json").readText()
     val nameUrlArray = JSONArray(nameUrl)
 
-    val onsdagWriter = File("C:\\Users\\KALAM\\Documents\\Kotlin\\Oppgaver\\src\\KdJSON\\OnsdagClean.json").writer()
-    val torsdagWriter = File("C:\\Users\\KALAM\\Documents\\Kotlin\\Oppgaver\\src\\KdJSON\\TorsdagClean.json").writer()
-    val coursesWriter = File("C:\\Users\\KALAM\\Documents\\Kotlin\\Oppgaver\\src\\KdJSON\\Courses.json").writer()
-    val sectorsWriter = File("C:\\Users\\KALAM\\Documents\\Kotlin\\Oppgaver\\src\\KdJSON\\Sectors.json").writer()
-
+    // Attributes to collect from json objects
     val wantedValues = arrayOf("name", "no_text", "sectors", "courses", "attending_onsdag", "attending_torsdag", "attending_kk", "attending_ip")
+
+    // INIT sectors and courses as mutable Sets; this won't allow copies to exist
     val totalSectorsSet = mutableSetOf<String>()
     val totalCoursesSet = mutableSetOf<String>()
 
 
+    val test = arrayOf("asdasd", "asdasd")
+
+    val mutListTEst = mutableListOf<Int>()
+
+    val asdasdsda = HashMap<String, MutableList<Int>>().putAll(test.map { it to mutableListOf<Int>() })
+
+
+    // INIT map that contains info on company name and their logo url
     val nameUrlMap = nameUrlArray.mapNotNull { when(it) {
                 is JSONObject -> it.get("name") to it.get("url")
                 else -> null
             } }.toMap()
 
 
+    // INIT map that maps json attributes to wanted names
     val wantedValuesMap = mapOf(
             "name" to "name",
             "no_text" to "description",
@@ -45,6 +47,7 @@ fun main(args: Array<String>) {
     )
 
 
+    // Function that takes jsonArray and maps over
     fun mapToClean(jsonArray: JSONArray): List<JSONObject> {
         return jsonArray.mapNotNull { item -> when(item) {
             is JSONObject -> {
@@ -61,8 +64,6 @@ fun main(args: Array<String>) {
             else -> null
         } }
     }
-    val test1 = JSONObject("{'key': 'value'}")
-    val test2 = JSONObject("{'key': 'value'}")
 
     val onsdagClean = mapToClean(onsdagArray)
     val torsdagClean = mapToClean(torsdagArray)
@@ -71,10 +72,7 @@ fun main(args: Array<String>) {
     val totalCourses = JSONArray(totalCoursesSet.toTypedArray())
     val totalSectors = JSONArray(totalSectorsSet.toTypedArray())
 
-    val cleaned = onsdagClean.plus(torsdagClean).distinctBy { it.get("name") }.also {
-        println(it.size)
-    }
-
+    val cleaned = onsdagClean.plus(torsdagClean).distinctBy { it.get("name") }
 
     println("""
         {
@@ -86,5 +84,4 @@ fun main(args: Array<String>) {
 
         }
     """.trimIndent())
-
 }

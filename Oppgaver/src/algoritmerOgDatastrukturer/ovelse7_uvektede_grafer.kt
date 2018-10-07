@@ -42,7 +42,7 @@ class Graph(initialSize: Int) {
 
     val nodes = Array(initialSize) { index -> Node(index) }
 
-    val linkedLists = mutableListOf<LinkedList<Node>>()
+    var linkedLists = mutableListOf<LinkedList<Node>>()
 
 
     /*
@@ -86,7 +86,17 @@ class Graph(initialSize: Int) {
 
         }.also { println("Total time was $it ms") }
 
-        //println("Graph had ${linkedLists.size} strong connections")
+        println()
+
+        println("Graph had ${linkedLists.size} strong connections")
+
+        println()
+
+        /*
+        linkedLists.forEach {
+            println(it.map(Node::id))
+        }
+        */
 
         //nodes.forEach { println("${it.id}: ${it.neighbours.size}") }
     }
@@ -94,8 +104,8 @@ class Graph(initialSize: Int) {
 
     fun applyDFS() {
 
-        var count = Int.MIN_VALUE
-        val countDelta = 200_000
+        var count = Long.MIN_VALUE
+        val countDelta = 2000L
 
         nodes.forEach {
             it.apply {
@@ -139,6 +149,8 @@ class Graph(initialSize: Int) {
                     followLeftTrail(stack.pop(), linkedList)
                 }
             }
+
+            this.linkedLists = linkedLists
         }
 
 
@@ -147,7 +159,6 @@ class Graph(initialSize: Int) {
             println("${it.map(Node::id)}")
         }
         */
-        println("Antall sterke: $strongConnection")
     }
 
     fun sort() {
@@ -174,7 +185,7 @@ class Graph(initialSize: Int) {
             val id: Int,
             var neighbours: MutableList<Node> = mutableListOf(),
             var found: Boolean = false,
-            var lower: Int? = null,
+            var lower: Long = 0L,
             var nrFoundChildren: Int = 0,
             var temp: MutableList<Node> = mutableListOf()
     )

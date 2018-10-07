@@ -9,7 +9,7 @@ import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) {
 
-    val file = File("C:\\Users\\TDAT1337\\Documents\\GitHub\\Kotlin\\Oppgaver\\src\\algoritmerOgDatastrukturer\\Assets\\L7g6.txt").bufferedReader()
+    val file = File("C:\\Users\\TDAT1337\\Documents\\GitHub\\Kotlin\\Oppgaver\\src\\algoritmerOgDatastrukturer\\Assets\\L7Skandinavia.txt").bufferedReader()
 
     val regex = Regex("(\\D+)")
 
@@ -66,7 +66,7 @@ class Graph(initialSize: Int) {
             }.also { println("1st DFS took $it ms") }
 
 
-            nodes.forEach { println("${it.id}: ${it.lower}") }
+            //nodes.forEach { println("${it.id}: ${it.lower}") }
 
             measureTimeMillis {
                 transpose()
@@ -91,14 +91,10 @@ class Graph(initialSize: Int) {
         //nodes.forEach { println("${it.id}: ${it.neighbours.size}") }
     }
 
-    private fun findNextUnFound(): Node? {
-        return nodes.firstOrNull { !it.found }//?.also { println("Next unfound node is ${it.id}") }
-    }
 
     private fun assignWork(linkedList: LinkedList<Node>, root: Node, count: Int) {
 
         threadPool!!.submit {
-            print("\r"+Thread.activeCount())
             var node: Node? = root
             var localCount = count -1
             while (node != null) {
@@ -109,7 +105,6 @@ class Graph(initialSize: Int) {
                     when(node.neighbours.size) {
                         0 -> {
                             node = null
-                            invokeNewLinkedList()
                         }
                         1 -> node = node.neighbours[0]
                         else -> node.neighbours.apply {
@@ -129,13 +124,11 @@ class Graph(initialSize: Int) {
 
     }
 
-    private fun invokeNewLinkedList() {
+    private fun invokeNewLinkedList(node: Node) {
         count+= countDelta
-        findNextUnFound()?.also { rootNode ->
-            linkedLists.add(LinkedList<Node>().also { linkedList ->
-                assignWork(linkedList, rootNode, count)
-            })
-        } ?: run { finished = true }
+        linkedLists.add(LinkedList<Node>().also { linkedList ->
+            assignWork(linkedList, node, count)
+        })
     }
 
     fun applyDFS() {
@@ -151,7 +144,7 @@ class Graph(initialSize: Int) {
         for (node in nodes) {
             if(!node.found) {
                 threadPool = Executors.newWorkStealingPool()
-                invokeNewLinkedList()
+                invokeNewLinkedList(node)
                 threadPool!!.shutdown()
                 threadPool!!.awaitTermination(1, TimeUnit.SECONDS)
             }

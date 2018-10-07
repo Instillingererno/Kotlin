@@ -9,7 +9,7 @@ import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) {
 
-    val file = File("C:\\Users\\TDAT1337\\Documents\\GitHub\\Kotlin\\Oppgaver\\src\\algoritmerOgDatastrukturer\\Assets\\L7g6.txt").bufferedReader()
+    val file = File("C:\\Users\\TDAT1337\\Documents\\GitHub\\Kotlin\\Oppgaver\\src\\algoritmerOgDatastrukturer\\Assets\\L7Skandinavia.txt").bufferedReader()
 
     val regex = Regex("(\\D+)")
 
@@ -42,13 +42,7 @@ class Graph(initialSize: Int) {
 
     val nodes = Array(initialSize) { index -> Node(index) }
 
-    var threadPool: ExecutorService? = null
     val linkedLists = mutableListOf<LinkedList<Node>>()
-
-    private var count = 32
-    private val countDelta = -10
-
-    private var finished = false
 
 
     /*
@@ -66,7 +60,6 @@ class Graph(initialSize: Int) {
             }.also { println("1st DFS took $it ms") }
 
 
-            nodes.forEach { println("${it.id}: ${it.lower}") }
 
             measureTimeMillis {
                 transpose()
@@ -77,7 +70,14 @@ class Graph(initialSize: Int) {
                 sort()
             }.also { println("Sort took $it ms") }
 
+            //nodes.forEach { println("${it.id}: ${it.lower}") }
 
+            //println()
+            /*
+            nodes.forEach {
+                println("${it.id}: ${it.neighbours.map(Node::id)}")
+            }
+            */
 
             measureTimeMillis {
                 applyDFS()
@@ -86,76 +86,68 @@ class Graph(initialSize: Int) {
 
         }.also { println("Total time was $it ms") }
 
-        println("Graph had ${linkedLists.size} strong connections")
+        //println("Graph had ${linkedLists.size} strong connections")
 
         //nodes.forEach { println("${it.id}: ${it.neighbours.size}") }
     }
 
-    private fun findNextUnFound(): Node? {
-        return nodes.firstOrNull { !it.found }//?.also { println("Next unfound node is ${it.id}") }
-    }
 
-    private fun assignWork(linkedList: LinkedList<Node>, root: Node, count: Int) {
+    fun applyDFS() {
 
-        threadPool!!.submit {
-            print("\r"+Thread.activeCount())
-            var node: Node? = root
-            var localCount = count -1
-            while (node != null) {
-                localCount-= 1
-                if (!node.found) {
-                    //linkedList.add(node.apply { lower = localCount; found = true })
-                    node.apply { lower = localCount; found = true }
-                    when(node.neighbours.size) {
-                        0 -> {
-                            node = null
-                            invokeNewLinkedList()
-                        }
-                        1 -> node = node.neighbours[0]
-                        else -> node.neighbours.apply {
-                            (1 until this.size).forEach { assignWork(
-                                    linkedList,
-                                    node!!.neighbours[it],
-                                    localCount + countDelta
-                            ) }
-                            node = node!!.neighbours[0]
+        var count = Int.MIN_VALUE
+        val countDelta = 200_000
+
+        nodes.forEach {
+            it.apply {
+                found = false
+            }
+        }
+        linkedLists.clear()
+
+        var strongConnection = 0
+        val stack = Stack<Node>()
+        val linkedLists: MutableList<LinkedList<Node>> = mutableListOf()
+
+        for (node in nodes) {
+            if (!node.found) {
+                strongConnection++
+                count += countDelta * strongConnection
+                val linkedList = LinkedList<Node>()
+                linkedLists.add(linkedList)
+                node.lower = count
+                stack.push(node)
+
+                tailrec fun followLeftTrail(node: Node, linkedList: LinkedList<Node>) {
+                    if (node.found) return
+                    count--
+                    linkedList.add(node)
+                    node.apply {
+                        found = true
+                        lower = count
+                    }
+                    when (node.neighbours.size) {
+                        0 -> return
+                        1 -> followLeftTrail(node.neighbours[0], linkedList)
+                        else -> {
+                            for (i in node.neighbours.size-1 downTo 1) stack.push(node.neighbours[i])
+                            followLeftTrail(node.neighbours[0], linkedList)
                         }
                     }
-                } else {
-                    break
+                }
+
+                while(!stack.empty()) {
+                    followLeftTrail(stack.pop(), linkedList)
                 }
             }
         }
 
-    }
 
-    private fun invokeNewLinkedList() {
-        count+= countDelta
-        findNextUnFound()?.also { rootNode ->
-            linkedLists.add(LinkedList<Node>().also { linkedList ->
-                assignWork(linkedList, rootNode, count)
-            })
-        } ?: run { finished = true }
-    }
-
-    fun applyDFS() {
-        nodes.forEach {
-            it.apply {
-                lower = -1
-                upper = -1
-                found = false
-            }
+        /*
+        linkedLists.forEach {
+            println("${it.map(Node::id)}")
         }
-        finished = false
-        linkedLists.clear()
-        for (node in nodes) {
-            if(!node.found) {
-                threadPool = Executors.newWorkStealingPool()
-                invokeNewLinkedList()
-                threadPool!!.shutdown()
-                threadPool!!.awaitTermination(1, TimeUnit.SECONDS)
-            }
-        }
+        */
+        println("Antall sterke: $strongConnection")
     }
 
     fun sort() {
@@ -182,8 +174,8 @@ class Graph(initialSize: Int) {
             val id: Int,
             var neighbours: MutableList<Node> = mutableListOf(),
             var found: Boolean = false,
-            var lower: Int = -1,
-            var upper: Int = -1,
+            var lower: Int? = null,
+            var nrFoundChildren: Int = 0,
             var temp: MutableList<Node> = mutableListOf()
     )
 }

@@ -2,9 +2,6 @@ package algoritmerOgDatastrukturer
 
 import java.io.File
 import java.util.*
-import java.util.concurrent.*
-import java.util.stream.IntStream
-import kotlin.concurrent.thread
 import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) {

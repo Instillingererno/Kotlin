@@ -2,7 +2,6 @@ package algoritmerOgDatastrukturer
 
 import java.io.File
 import java.util.*
-import java.util.function.Consumer
 import kotlin.system.measureTimeMillis
 
 
@@ -64,11 +63,10 @@ class WeightedGraph(initialSize: Int) {
             }
         }
 
-        if(size() < 50) {
-            nodes.forEach {
+        //if(size() < 50)
+            nodes.take(100).forEach {
                 println("${it.id}   ${it.prevNode?.id}  ${it.priority}")
             }
-        }
     }
 
 

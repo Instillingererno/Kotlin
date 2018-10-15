@@ -31,7 +31,7 @@ fun main(args: Array<String>) {
 fun runPipeline(graph: WeightedGraph) {
 
     measureTimeMillis {
-        graph.runDijkstra(graph[1])
+        graph dijkstra 1
     }.also { println("Dijkstra took $it ms") }
 
 }
@@ -42,7 +42,7 @@ fun runPipeline(graph: WeightedGraph) {
 class WeightedGraph(initialSize: Int) {
 
 
-
+    infix fun dijkstra(start: Int) = runDijkstra(nodes[start])
 
 
     fun runDijkstra(start: Node) {
@@ -50,7 +50,6 @@ class WeightedGraph(initialSize: Int) {
         queue.add(start.apply { priority = 0 })
         while (queue.isNotEmpty()) {
             val node = queue.poll()
-            //println("Hi, ${node.id}")
             node.forEachEdge {
                 if (it.to.priority > node.priority + it.weight) {
                     it.to.apply {
@@ -63,7 +62,7 @@ class WeightedGraph(initialSize: Int) {
             }
         }
 
-        //if(size() < 50)
+        if (size() < 50)
             nodes.take(100).forEach {
                 println("${it.id}   ${it.prevNode?.id}  ${it.priority}")
             }

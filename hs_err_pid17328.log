@@ -2910,7 +2910,7 @@ Event: 2.472 GC heap before
 }
 
 Deoptimization events (10 events):
-Event: 0.435 Thread 0x0000015d71b98800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000015d07ae9398 method=algoritmerOgDatastrukturer.WeightedGraph.<init>(I)V @ 21 c2
+Event: 0.435 Thread 0x0000015d71b98800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000015d07ae9398 method=algoritmerOgDatastrukturer.ovelse8_vektede_grafer.WeightedGraph.<init>(I)V @ 21 c2
 Event: 0.560 Thread 0x0000015d19402000 Uncommon trap: reason=predicate action=maybe_recompile pc=0x0000015d07affaa0 method=java.util.AbstractCollection.toArray([Ljava/lang/Object;)[Ljava/lang/Object; @ 46 c2
 Event: 0.560 Thread 0x0000015d19405000 Uncommon trap: reason=predicate action=maybe_recompile pc=0x0000015d07affaa0 method=java.util.AbstractCollection.toArray([Ljava/lang/Object;)[Ljava/lang/Object; @ 46 c2
 Event: 0.576 Thread 0x0000015d19408000 Uncommon trap: reason=array_check action=maybe_recompile pc=0x0000015d07b010b0 method=java.util.AbstractCollection.toArray([Ljava/lang/Object;)[Ljava/lang/Object; @ 116 c2

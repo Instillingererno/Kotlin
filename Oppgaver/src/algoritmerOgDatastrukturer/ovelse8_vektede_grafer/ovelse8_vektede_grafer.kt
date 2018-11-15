@@ -1,4 +1,4 @@
-package algoritmerOgDatastrukturer
+package algoritmerOgDatastrukturer.ovelse8_vektede_grafer
 
 import java.io.File
 import java.util.*
@@ -41,9 +41,7 @@ fun runPipeline(graph: WeightedGraph) {
 
 class WeightedGraph(initialSize: Int) {
 
-
     infix fun dijkstra(start: Int) = runDijkstra(nodes[start])
-
 
     fun runDijkstra(start: Node) {
         val queue = PriorityQueue<Node>(Comparator.comparingInt(Node::priority))
@@ -67,10 +65,6 @@ class WeightedGraph(initialSize: Int) {
                 println("${it.id}   ${it.prevNode?.id}  ${it.priority}")
             }
     }
-
-
-
-
 
 
     private val nodes = Array(initialSize) { Node(it) }
